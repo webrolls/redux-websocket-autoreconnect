@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matiere-noire/redux-websocket-autoreconnect.git"
+    "url": "git+https://github.com/tridev87/redux-websocket-autoreconnect.git"
   },
   "keywords": [
     "redux", "react-native", "websokcet"
@@ -21,9 +21,9 @@
   "author": "Baptiste Bouillot",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/matiere-noire/redux-websocket-autoreconnect/issues"
+    "url": "https://github.com/tridev87/redux-websocket-autoreconnect/issues"
   },
-  "homepage": "https://github.com/matiere-noire/redux-websocket-autoreconnect",
+  "homepage": "https://github.com/tridev87/redux-websocket-autoreconnect",
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
