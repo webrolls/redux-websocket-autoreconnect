@@ -11,12 +11,12 @@ This middleware uses actions, dispatched with Redux to interact with a WebSocket
 ## Installation
 
 ```bash
-$ yarn add matiere-noire/redux-websocket-autoreconnect
+$ yarn add tridev87/redux-websocket-autoreconnect
 ```
 OR
 
 ```bash
-$ npm install matiere-noire/redux-websocket-autoreconnect --save
+$ npm install tridev87/redux-websocket-autoreconnect --save
 ```
 
 ## Middleware Installation
@@ -25,7 +25,7 @@ Once you have installed the library, you can add it to your Redux middleware sta
 
 ```javascript
 // ... other imports
-import websocket from 'matiere-noire/redux-websocket-autoreconnect'
+import websocket from 'tridev87/redux-websocket-autoreconnect'
 
 const app = combineReducers(reducers)
 const store = createStore(
@@ -36,63 +36,6 @@ const store = createStore(
   )
 )
 ```
-
-Another example that add the library to Redux middleware inside an [Ignite](https://github.com/infinitered/ignite) Project (in App/redux/CreateStore.js) :
-
-```javascript
-import { createStore, applyMiddleware, compose } from 'redux'
-import { autoRehydrate } from 'redux-persist'
-import Config from '../Config/DebugConfig'
-import createSagaMiddleware from 'redux-saga'
-import RehydrationServices from '../Services/RehydrationServices'
-import ReduxPersist from '../Config/ReduxPersist'
-import websocket from '../Lib/redux-websocket'
-
-
-// creates the store
-export default (rootReducer, rootSaga) => {
-  /* ------------- Redux Configuration ------------- */
-
-  const middleware = []
-  const enhancers = []
-
-  /* ------------- Saga Middleware ------------- */
-
-  const sagaMonitor = __DEV__ ? console.tron.createSagaMonitor() : null
-  const sagaMiddleware = createSagaMiddleware({ sagaMonitor })
-  middleware.push(sagaMiddleware)
-
-  /* ------------- Websocket Middleware ------------- */
-
-  middleware.push(websocket)
-
-  /* ------------- Assemble Middleware ------------- */
-
-  enhancers.push(applyMiddleware(...middleware))
-
-  /* ------------- AutoRehydrate Enhancer ------------- */
-
-  // add the autoRehydrate enhancer
-  if (ReduxPersist.active) {
-    enhancers.push(autoRehydrate())
-  }
-
-  // if Reactotron is enabled (default for __DEV__), we'll create the store through Reactotron
-  const createAppropriateStore = Config.useReactotron ? console.tron.createStore : createStore
-  const store = createAppropriateStore(rootReducer, compose(...enhancers))
-
-  // configure persistStore and check reducer version number
-  if (ReduxPersist.active) {
-    RehydrationServices.updateReducers(store)
-  }
-
-  // kick off root saga
-  sagaMiddleware.run(rootSaga)
-
-  return store
-}
-```
-
 ## Available Action Types
 
 The following types are available.
@@ -172,7 +115,7 @@ Dispatched from redux-websocket when the WebSocket `onmessage` callback is execu
 
 ```javascript
 {
-  type: WEBSOCKET_CLOSED,
+  type: WEBSOCKET_MESSAGE,
   payload: {
     timestamp: Date,
     event: Event,
