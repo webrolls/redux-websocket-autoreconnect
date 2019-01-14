@@ -1,4 +1,4 @@
-# redux-websocket-on24
+# redux-websocket-autoreconnect
 
 ## Summary
 
@@ -11,12 +11,12 @@ This middleware uses actions, dispatched with Redux to interact with a WebSocket
 ## Installation
 
 ```bash
-$ yarn add tridev87/redux-websocket-on24
+$ yarn add tridev87/redux-websocket-autoreconnect
 ```
 OR
 
 ```bash
-$ npm install tridev87/redux-websocket-on24 --save
+$ npm install tridev87/redux-websocket-autoreconnect --save
 ```
 
 ## Middleware Installation
@@ -25,7 +25,7 @@ Once you have installed the library, you can add it to your Redux middleware sta
 
 ```javascript
 // ... other imports
-import websocket from 'tridev87/redux-websocket-on24'
+import websocket from 'tridev87/redux-websocket-autoreconnect'
 
 const app = combineReducers(reducers)
 const store = createStore(
