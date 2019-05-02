@@ -45,7 +45,7 @@ export const message = (event: MessageEvent): Action => {
   if(command === 'qna' || command === 'folder' ){
     responseType =  (`WEBSOCKET_MESSAGE_${command}_${action}`).toUpperCase();
   } 
-  console.log('Web Socket Response Type',responseType);
+  console.log('Web Socket Response Type KALEEM GIT !!!',responseType);
   return {
     type: responseType,
     payload: {
