@@ -31,14 +31,6 @@ export const closed = (event: Event): Action => ({
 });
 
 export const message = (event: MessageEvent): Action => {
-  // return {
-  //   type: WEBSOCKET_MESSAGE,
-  //   payload: {
-  //     timestamp: new Date(),
-  //     data: event.data,
-  //     event
-  //   }
-  // }
   const data = JSON.parse(event.data);
   let responseType = WEBSOCKET_MESSAGE;
   const {command,action} = data;
@@ -50,7 +42,7 @@ export const message = (event: MessageEvent): Action => {
     type: responseType,
     payload: {
       timestamp: new Date(),
-      data: responseType === WEBSOCKET_MESSAGE ? event.data : data ,
+      data: data ,
       event
     },
   }
